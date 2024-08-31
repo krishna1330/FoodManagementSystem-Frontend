@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #F2F2F2 !important;
+}
+
+.nav-link {
+    color: #333;
+}
+
+.nav-link:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav li a.active {
+    font-weight: bold;
+}

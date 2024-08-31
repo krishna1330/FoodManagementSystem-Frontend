@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4">Login</h4>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="emailID" class="form-label">Email ID</label>
+                            <input id="emailID" type="email" class="form-control" formControlName="emailID"
+                                [ngClass]="{ 'is-invalid': loginForm.get('emailID')?.invalid && loginForm.get('emailID')?.touched }" />
+                            <div *ngIf="loginForm.get('emailID')?.invalid && loginForm.get('emailID')?.touched"
+                                class="invalid-feedback">
+                                <div *ngIf="loginForm.get('emailID')?.errors?.['required']">Email ID is required.</div>
+                                <div *ngIf="loginForm.get('emailID')?.errors?.['email']">Invalid email format.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password" class="form-control" formControlName="password"
+                                [ngClass]="{ 'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched }" />
+                            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                                class="invalid-feedback">
+                                <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+                                <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least
+                                    8 characters long.</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

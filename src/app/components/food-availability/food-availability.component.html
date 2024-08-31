@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <button class="btn btn-primary mb-3" (click)="onAddFoodAvailability()">Add Food Availability</button>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Menu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of foodAvailability; let i = index">
+                <td>{{ item.fromDate | date: 'MMMM d, y' }}</td>
+                <td>{{ item.toDate | date: 'MMMM d, y' }}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let food of item.menu">{{ food }}</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr *ngIf="isAdding">
+                <td>
+                    <input type="date" class="form-control" [(ngModel)]="fromDate">
+                </td>
+                <td>
+                    <input type="date" class="form-control" [(ngModel)]="toDate">
+                </td>
+                <td>
+                    <div *ngFor="let item of menu">
+                        <input type="checkbox" class="form-check-input" [checked]="selectedMenu.includes(item.menuID)"
+                            (change)="onMenuSelectionChange(item.menuID, $event)">
+                        {{ item.food }}
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button *ngIf="isAdding" class="btn btn-success" (click)="saveFoodAvailability()">Save</button>
+</div>

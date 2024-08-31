@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'bootstrap/dist/css/bootstrap.min.css' as *;
+
+@import 'ngx-toastr/toastr';
+
+.toast-top-center {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
